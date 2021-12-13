@@ -21,6 +21,10 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthService } from './auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TasksComponent } from './projects/tasks/tasks.component';
+import { NavigationComponent } from './projects/navigation/navigation.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { AlterComponent } from './projects/alter/alter.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +40,11 @@ import { HttpClientModule } from '@angular/common/http';
         NavbarComponent,
         BtntopComponent,
         RegisterComponent,
-        LandingComponent
+        LandingComponent,
+        TasksComponent,
+        NavigationComponent,
+        ProjectsComponent,
+        AlterComponent
     ],
     imports: [
         BrowserModule,

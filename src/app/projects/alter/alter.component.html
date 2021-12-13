@@ -1,0 +1,31 @@
+<div class="jumbotron">
+    <h1 class="display-4">Alter Project</h1>
+</div>
+<div class="container">
+    <form #addProject="ngForm" (ngSubmit)="saveProject()">
+        <div class="form-group mb-2">
+            <label for="exampleFormControlInput1">Title</label>
+            <input type="text" name="title" class="form-control" [(ngModel)]="project.title" id="exampleFormControlInput1" placeholder="Title">
+        </div>
+        <div class="form-group mb-2">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea class="form-control" name="description" [(ngModel)]="project.description" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-group mb-2">
+            <label for="exampleFormControlTextarea1">Start Date</label>
+            <input type="date" class="form-control" name="startDate" [(ngModel)]="project.startDate" placeholder="Title">
+        </div>
+        <div class="form-group mb-2">
+            <label for="exampleFormControlTextarea1">End Date</label>
+            <input type="date" class="form-control" name="endDate" [(ngModel)]="project.endDate" placeholder="Title">
+        </div>
+        <div class="form-group mb-2">
+            <label for="exampleFormControlSelect1">Status</label>
+            <select class="form-control" [(ngModel)]="project.status" name="status" id="exampleFormControlSelect1">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mb-20">Add Project</button>
+    </form>
+</div>

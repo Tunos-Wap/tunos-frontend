@@ -23,7 +23,7 @@ export class AuthService {
             }
         ).pipe(
             tap((response: any) => {
-                this.emitLoggedInUser(response.userInfo);
+                this.emitLoggedInUser(response.userInfo, response.token);
             })
         )
     }
@@ -41,19 +41,32 @@ export class AuthService {
             }
         ).pipe(
             tap((response: any) => {
-                this.emitLoggedInUser(response.userInfo);
+                this.emitLoggedInUser(response.userInfo, response.token);
             })
         )
     }
 
-    private emitLoggedInUser(userInfo: any) {
-        //TODO save into local db
+    autoLogin() {
+        let loggedInUser: User = JSON.parse(localStorage.getItem("user") || '{}');
+
+        if (Object.keys(loggedInUser).length == 0) {
+            return false;
+        }
+
+        let newUser = new User(loggedInUser.id, loggedInUser.username, loggedInUser.email, loggedInUser.firstName,
+            loggedInUser.lastName, loggedInUser.phoneNumber, loggedInUser.apiKey);
+
+        this.user.next(newUser);
+        return true;
+    }
+
+    private emitLoggedInUser(userInfo: any, token: string) {
         const userResponse = new User(
-            userInfo.username, userInfo.first_name,
-            userInfo.last_name, userInfo.phone_number,
-            userInfo.email, userInfo.authToken
+            userInfo._id, userInfo.username, userInfo.email, userInfo.first_name,
+            userInfo.last_name, userInfo.phone_number, token
         );
 
         this.user.next(userResponse);
+        localStorage.setItem("user", JSON.stringify(userResponse));
     }
 }

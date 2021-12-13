@@ -36,8 +36,8 @@ export class RegisterComponent implements OnInit {
                 formValues.phoneNumber
             )
             .subscribe(response => {
-                this.toastService.success(response.msg);
-                this.router.navigateByUrl("/landing");
+                this.toastService.success(response.msg + "\n Please login to continue");
+                this.router.navigateByUrl("/login");
             }, (errorObj => {
                 this.toastService.error(errorObj.error.msg)
             }))

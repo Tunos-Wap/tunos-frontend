@@ -1,0 +1,9 @@
+.media-right {
+    display: flex;
+}
+.media-right a {
+    margin-right: 20px;
+}
+.media-list {
+    border-bottom: 1px solid #d3d3d3;   
+}
