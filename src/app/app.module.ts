@@ -22,9 +22,9 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthService } from './auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TasksComponent } from './projects/tasks/tasks.component';
-import { NavigationComponent } from './projects/navigation/navigation.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AlterComponent } from './projects/alter/alter.component';
+import { TaskAlterComponent } from './projects/tasks/task-alter/task-alter.component';
 
 @NgModule({
     declarations: [
@@ -42,9 +42,9 @@ import { AlterComponent } from './projects/alter/alter.component';
         RegisterComponent,
         LandingComponent,
         TasksComponent,
-        NavigationComponent,
         ProjectsComponent,
-        AlterComponent
+        AlterComponent,
+        TaskAlterComponent
     ],
     imports: [
         BrowserModule,

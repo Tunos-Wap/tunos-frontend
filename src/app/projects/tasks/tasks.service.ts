@@ -1,24 +1,31 @@
-import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {take, exhaustMap, map} from "rxjs/operators"
-
-import {environment} from "src/environments/environment.prod";
-import {AuthService} from "../auth/auth.service";
+import {exhaustMap, map, take} from "rxjs/operators";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {environment} from "../../../environments/environment.prod";
+import {AuthService} from "../../auth/auth.service";
 import {ToastrService} from "ngx-toastr";
 
 @Injectable({providedIn: "root"})
-export class ProjectService {
+export class TasksService {
 
-    constructor(private httpClient: HttpClient, private authService: AuthService, private toastService: ToastrService) {
-
+    constructor(private authService: AuthService, private httpClient: HttpClient, private toastService: ToastrService) {
     }
 
-    retrieve() {
+    retrieve(projectId: string) {
         return this.authService.user.pipe(
             take(1),
             exhaustMap(user => {
-                let headers = new HttpHeaders().set("Authorization", "bearer " + user!.apiKey)
-                return this.httpClient.get<any>(environment.BASE_URL + "/projects", {'headers': headers});
+                const params = {
+                    project_id: projectId
+                }
+                let headers = new HttpHeaders().set("Authorization", "bearer " + user!.apiKey);
+
+                return this.httpClient.post<any>(
+                    environment.BASE_URL + "/tasks",
+                    params,
+                    {
+                        headers
+                    })
             }),
             map(response => {
                 let data = this.handleResponse(response);
@@ -28,23 +35,23 @@ export class ProjectService {
             }))
     }
 
-    saveProject(title: string, description: string, status: string, startDate: Date, endDate: Date) {
+    saveTask(title: string, summary: string, status: string, startDate: Date, endDate: Date, priority: string, projectId: string) {
         return this.authService.user.pipe(
             take(1),
             exhaustMap(user => {
                 let headers = new HttpHeaders().set("Authorization", "bearer " + user!.apiKey)
                 const params = {
-                    friendly_id: "friendly",
                     title: title,
-                    description: description,
+                    summary: summary,
                     status: status,
                     start_date: startDate,
                     end_date: endDate,
-                    user_id: user!.id
+                    priority: priority,
+                    project_id: projectId
                 }
 
                 return this.httpClient.post(
-                    environment.BASE_URL + "/projects/create",
+                    environment.BASE_URL + "/tasks/create",
                     params,
                     {
                         headers
@@ -52,8 +59,8 @@ export class ProjectService {
             }))
     }
 
-    // Janvi --- write your delete API call code 
-    
+    // Janvi --- write your code
+
     private handleResponse(response: any) {
         if (response.success) {
             return response.data

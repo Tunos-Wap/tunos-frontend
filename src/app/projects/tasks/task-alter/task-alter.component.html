@@ -1,0 +1,41 @@
+<div class="jumbotron">
+    <h1 class="display-4">Alter Task</h1>
+</div>
+<div class="container">
+    <form #addTask="ngForm" (ngSubmit)="saveTask()">
+        <div class="form-group mb-2">
+            <label for="exampleFormControlInput1">Title</label>
+            <input type="text" name="title" class="form-control" [(ngModel)]="task.title" id="exampleFormControlInput1" placeholder="Title">
+        </div>
+        <div class="form-group mb-2">
+            <label for="exampleFormControlTextarea1">Summary</label>
+            <textarea class="form-control" name="description" [(ngModel)]="task.summary" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-group mb-2">
+            <label for="exampleFormControlTextarea1">Start Date</label>
+            <input type="date" class="form-control" name="startDate" [(ngModel)]="task.startDate" placeholder="Start Date">
+        </div>
+        <div class="form-group mb-2">
+            <label for="exampleFormControlTextarea1">End Date</label>
+            <input type="date" class="form-control" name="endDate" [(ngModel)]="task.endDate" placeholder="End Date">
+        </div>
+        <div class="form-group mb-2">
+            <label for="exampleFormControlSelect1">Status</label>
+            <select class="form-control" [(ngModel)]="task.status" name="status" id="exampleFormControlSelect1">
+                <option value="pending">Pending</option>
+                <option value="in-progress">In Progress</option>
+                <option value="review">Review</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+        <div class="form-group mb-2">
+            <label for="exampleFormControlSelect2">Priority</label>
+            <select class="form-control" [(ngModel)]="task.priority" name="priority" id="exampleFormControlSelect2">
+                <option value="low">Low</option>
+                <option value="normal">Normal</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mb-20">Add Project</button>
+    </form>
+</div>

@@ -7,6 +7,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { TasksComponent } from './projects/tasks/tasks.component';
 import { AlterComponent } from './projects/alter/alter.component';
+import { TaskAlterComponent } from "./projects/tasks/task-alter/task-alter.component";
 
 const routes: Routes = [
     { path: '', redirectTo: '/landing', pathMatch: 'full' },
@@ -17,6 +18,8 @@ const routes: Routes = [
     { path: 'projects/alter', component: AlterComponent },
     { path: 'projects/alter/:id', component: AlterComponent },
     { path: 'projects/:id/tasks', component: TasksComponent },
+    { path: 'tasks/:projectId/alter', component: TaskAlterComponent },
+    { path: 'tasks/:projectId/alter/:id', component: TaskAlterComponent },
 ];
 
 @NgModule({

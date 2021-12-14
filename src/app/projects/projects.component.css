@@ -1,9 +1,16 @@
 .media-right {
     display: flex;
 }
+
 .media-right a {
     margin-right: 20px;
 }
+
 .media-list {
-    border-bottom: 1px solid #d3d3d3;   
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.link-danger {
+    color: red !important;
+    text-decoration: underline !important;
 }

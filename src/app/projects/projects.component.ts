@@ -18,4 +18,8 @@ export class ProjectsComponent implements OnInit {
             this.pageLoading = false;
         })
     }
+    
+    deleteProject(){
+        // Janvi --- write your code
+    }
 }

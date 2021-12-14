@@ -13,8 +13,9 @@
                 <p>{{ project.description }}</p>
             </div>
             <div class="media-right">
-                <a href="" class="text=link" routerLink="/projects/alter/2">Edit</a>
-                <a href="" class="text=link" routerLink="/projects/1/tasks">Go to Tasks</a>
+                <a href="javascript:void(0)" class="text=link" routerLink="/projects/alter/{{project._id}}">Edit</a>
+                <a href="javascript:void(0)" class="link-danger" (click)="deleteProject()">Delete</a>
+                <a href="javascript:void(0)" class="text=link" routerLink="/projects/{{project._id}}/tasks">Go to Tasks</a>
             </div>
         </li>
     </ul>
