@@ -25,6 +25,7 @@ import { TasksComponent } from './projects/tasks/tasks.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { AlterComponent } from './projects/alter/alter.component';
 import { TaskAlterComponent } from './projects/tasks/task-alter/task-alter.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,8 @@ import { TaskAlterComponent } from './projects/tasks/task-alter/task-alter.compo
         TasksComponent,
         ProjectsComponent,
         AlterComponent,
-        TaskAlterComponent
+        TaskAlterComponent,
+        ProfileComponent
     ],
     imports: [
         BrowserModule,

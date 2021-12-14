@@ -8,12 +8,14 @@ import { ProjectsComponent } from './projects/projects.component';
 import { TasksComponent } from './projects/tasks/tasks.component';
 import { AlterComponent } from './projects/alter/alter.component';
 import { TaskAlterComponent } from "./projects/tasks/task-alter/task-alter.component";
+import { ProfileComponent } from "./profile/profile.component";
 
 const routes: Routes = [
     { path: '', redirectTo: '/landing', pathMatch: 'full' },
     { path: 'landing', component: LandingComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'profile', component: ProfileComponent },
     { path: 'projects', component: ProjectsComponent },
     { path: 'projects/alter', component: AlterComponent },
     { path: 'projects/alter/:id', component: AlterComponent },

@@ -14,3 +14,18 @@
     color: red !important;
     text-decoration: underline !important;
 }
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-header img {
+    height: 80px;
+    width: auto;
+    padding: 20px;
+}
+.profile-header img:hover {
+    background: lightgrey;
+    border-radius: 10px;
+    cursor: pointer;
+}
