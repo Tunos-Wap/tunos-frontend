@@ -8,15 +8,20 @@
 </div>
 
 <div class="container" *ngIf="!pageLoading">
+    <div class="checkbox mb-3">
+        <label> <input type="checkbox" class="mr-2" [(ngModel)]="displayCompleted">Show Completed Tasks </label>
+    </div>
     <ul class="list-unstyled">
-        <li class="media mb-15 media-list pb-15" *ngFor="let task of tasks">
-            <div class="media-body">
-                <h5 class="mt-0 mb-1">{{ task.title }}</h5>
-                <p>{{ task.summary }}</p>
-            </div>
-            <div class="media-right">
-                <a href="javascript:void(0)" class="text-link" routerLink="/tasks/{{projectId}}/alter/{{task._id}}">Edit</a>
-                <a href="javascript:void(0)" class="link-danger" (click)="deleteTask()">Delete</a>
+        <li *ngFor="let task of tasks">
+            <div class="media mb-15 media-list pb-15" *ngIf="shouldDisplay(task)">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">{{ task.title }}</h5>
+                    <p>{{ task.summary }}</p>
+                </div>
+                <div class="media-right">
+                    <a href="javascript:void(0)" class="text-link" routerLink="/tasks/{{projectId}}/alter/{{task._id}}">Edit</a>
+                    <a href="javascript:void(0)" class="link-danger" (click)="deleteTask()">Delete</a>
+                </div>
             </div>
         </li>
     </ul>

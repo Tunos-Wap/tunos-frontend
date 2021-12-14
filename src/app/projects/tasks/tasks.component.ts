@@ -11,6 +11,7 @@ export class TasksComponent implements OnInit {
     pageLoading = true;
     tasks: any;
     projectId: string = "";
+    displayCompleted = false;
 
     constructor(private taskService: TasksService, private route: ActivatedRoute) {
 
@@ -32,4 +33,7 @@ export class TasksComponent implements OnInit {
         }
     }
 
+    shouldDisplay(task: any) {
+        return this.displayCompleted || (!this.displayCompleted && task.status != "completed");
+    }
 }
