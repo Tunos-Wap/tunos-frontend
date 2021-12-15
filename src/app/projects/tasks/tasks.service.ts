@@ -15,14 +15,10 @@ export class TasksService {
         return this.authService.user.pipe(
             take(1),
             exhaustMap(user => {
-                const params = {
-                    project_id: projectId
-                }
                 let headers = new HttpHeaders().set("Authorization", "bearer " + user!.apiKey);
 
-                return this.httpClient.post<any>(
-                    environment.BASE_URL + "/tasks",
-                    params,
+                return this.httpClient.get<any>(
+                    environment.BASE_URL + "/tasks/?project_id=" + projectId,
                     {
                         headers
                     })
