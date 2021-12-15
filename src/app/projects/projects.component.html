@@ -17,7 +17,7 @@
             </div>
             <div class="media-right">
                 <a href="javascript:void(0)" class="text=link" routerLink="/projects/alter/{{project._id}}">Edit</a>
-                <a href="javascript:void(0)" class="link-danger" (click)="deleteProject()">Delete</a>
+                <a href="javascript:void(0)" class="link-danger" (click)="deleteProject(project._id)">Delete</a>
                 <a href="javascript:void(0)" class="text=link" routerLink="/projects/{{project._id}}/tasks">Go to Tasks</a>
             </div>
         </li>

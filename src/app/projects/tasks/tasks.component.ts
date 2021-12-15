@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TasksService} from "./tasks.service";
 import {ActivatedRoute} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
     selector: 'app-tasks',
@@ -13,7 +14,7 @@ export class TasksComponent implements OnInit {
     projectId: string = "";
     displayCompleted = false;
 
-    constructor(private taskService: TasksService, private route: ActivatedRoute) {
+    constructor(private taskService: TasksService, private toastService: ToastrService ,private route: ActivatedRoute) {
 
     }
 
@@ -27,9 +28,16 @@ export class TasksComponent implements OnInit {
         })
     }
 
-    deleteTask() {
-        if (confirm("Are you sure")) {
-            // Janvi --- write your code
+    deleteTask(_id: string) {
+        if (confirm("Are you sure") == true) {
+            this.taskService.onDeleteTask(_id).subscribe(()=>{
+                let index = this.tasks.findIndex( (el:any) =>el._id == _id);
+                if(index != -1){
+                    this.tasks.splice(index, 1);
+                }
+                this.toastService.success("Task has been deleted succesfully");
+            });
+            
         }
     }
 

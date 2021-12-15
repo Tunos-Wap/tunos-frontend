@@ -20,7 +20,7 @@
                 </div>
                 <div class="media-right">
                     <a href="javascript:void(0)" class="text-link" routerLink="/tasks/{{projectId}}/alter/{{task._id}}">Edit</a>
-                    <a href="javascript:void(0)" class="link-danger" (click)="deleteTask()">Delete</a>
+                    <a href="javascript:void(0)" class="link-danger" (click)="deleteTask(task._id)">Delete</a>
                 </div>
             </div>
         </li>

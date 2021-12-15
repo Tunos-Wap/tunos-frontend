@@ -55,7 +55,16 @@ export class TasksService {
             }))
     }
 
-    // Janvi --- write your code
+    onDeleteTask(taskId: string){
+
+        return this.authService.user.pipe(
+            take(1),
+            exhaustMap(user => {
+                let headers = new HttpHeaders().set("Authorization", "bearer " + user!.apiKey)
+                return this.httpClient.delete(environment.BASE_URL + "/projects/delete/" + taskId , {headers});
+            }))
+
+    }
 
     private handleResponse(response: any) {
         if (response.success) {
