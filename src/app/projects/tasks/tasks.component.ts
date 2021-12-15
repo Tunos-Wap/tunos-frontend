@@ -27,9 +27,16 @@ export class TasksComponent implements OnInit {
         })
     }
 
-    deleteTask() {
-        if (confirm("Are you sure")) {
-            // Janvi --- write your code
+    deleteTask(_id: string) {
+        if (confirm("Are you sure") == true) {
+            this.taskService.onDeleteTask(_id).subscribe(()=>{
+                let index = this.tasks.findIndex( (el:any) =>el._id == _id);
+                if(index != -1){
+                    this.tasks.splice(index, 1);
+                }
+                this.toastService.success("Task has been deleted succesfully");
+            });
+            
         }
     }
 
