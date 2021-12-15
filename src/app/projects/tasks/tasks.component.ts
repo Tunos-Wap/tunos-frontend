@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TasksService} from "./tasks.service";
 import {ActivatedRoute} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
     selector: 'app-tasks',
@@ -13,7 +14,7 @@ export class TasksComponent implements OnInit {
     projectId: string = "";
     displayCompleted = false;
 
-    constructor(private taskService: TasksService, private route: ActivatedRoute) {
+    constructor(private taskService: TasksService, private toastService: ToastrService ,private route: ActivatedRoute) {
 
     }
 

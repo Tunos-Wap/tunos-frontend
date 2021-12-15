@@ -52,7 +52,16 @@ export class ProjectService {
             }))
     }
 
-    // Janvi --- write your delete API call code 
+    onDeleteProject(projectId: string){
+
+        return this.authService.user.pipe(
+            take(1),
+            exhaustMap(user => {
+                let headers = new HttpHeaders().set("Authorization", "bearer " + user!.apiKey)
+                return this.httpClient.delete(environment.BASE_URL + "/projects/delete/" + projectId , {headers});
+            }))
+
+    }
     
     private handleResponse(response: any) {
         if (response.success) {
